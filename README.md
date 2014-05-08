@@ -65,7 +65,7 @@ to switch to.
 By default, Whiplash doesn't really do anything. That's because you need
 to tell it *what* to do when switching projects. Should the current
 working directory be reset? Should NERDTree open? You decide! Whiplash
-allows you to specify script Vimscript configuration files which should
+allows you to specify Vimscript configuration files which should
 be run when switching projects. Don't worry: it's not as complicated as
 it sounds.
 
