@@ -107,7 +107,7 @@ provided to get you started. Feel free to modify or delete any of them.
 
 ## Configuration Commands
 
-Inside any of the configuration files, you can call the `WhiplashCD`
+Inside any of the configuration files you can call the `WhiplashCD`
 command. This is equivalent to calling `:cd ~/projects/yourproject`, as
 one would do to change the working directory back in the pre-Whiplash
 days, when steam-power was still a disruptive innovation.
