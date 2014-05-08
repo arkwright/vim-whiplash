@@ -39,12 +39,14 @@ function WhiplashUseProject(...)
   " The project name is the value of the first and only argument.
   let projectName = a:1
 
+  " TODO: Convert this global substitution to a simple strip of leading and trailing quotes.
   " Remove any quotation marks from the project name, which can be
   " accidentally added if Whiplash is invoked like so:
   " Whiplash 'projectname'
   let projectName = substitute(projectName, '"', '', 'g')
   let projectName = substitute(projectName, "'", "", "g")
 
+  " TODO: If user invokes :Whiplash someproject/, strip the trailing slash.
   let g:WhiplashCurrentProject = projectName
 
   " Determine if a configuration file for the new project exists.
