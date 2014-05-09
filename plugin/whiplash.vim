@@ -5,6 +5,7 @@
 " let g:WhiplashCommandName = 'CustomCommandNameToInvokeWhiplash"
 
 let g:WhiplashCurrentProject = ""
+let g:WhiplashCurrentProjectPath = ""
 
 " Allow the user to specify the directory where project-specific configuration
 " files will be stored. Fallback to a default value if nothing is specified.
@@ -21,7 +22,7 @@ endif
 " Dynamically create the Whiplash invocation command, unless an identically
 " named command already exists.
 if exists(":" . g:WhiplashCommandName) ==# 0
-  execute "command! -complete=custom,WhiplashProjectNameAutocomplete -nargs=1 " . g:WhiplashCommandName . " call WhiplashUseProject (<f-args>)"
+  execute "command! -complete=custom,WhiplashProjectNameAutocomplete -nargs=? " . g:WhiplashCommandName . " call WhiplashUseProject (<f-args>)"
 endif
 
 " Create a convenient command for invoking the WhiplashCD() function.
@@ -31,8 +32,12 @@ endif
 
 " Accept any number of arguments.
 function WhiplashUseProject(...)
-  " If an argument was not passed, do nothing.
+  " If an argument was not passed, simply output information about the
+  " current Whiplash state.
   if a:0 !=# 1
+    echo "Current Project : " . g:WhiplashCurrentProject
+    echo "Project Path    : " . g:WhiplashCurrentProjectPath
+    echo "Vim Working Dir : " . getcwd()
     return
   endif
 
@@ -46,8 +51,15 @@ function WhiplashUseProject(...)
   let projectName = substitute(projectName, '"', '', 'g')
   let projectName = substitute(projectName, "'", "", "g")
 
-  " TODO: If user invokes :Whiplash someproject/, strip the trailing slash.
+  " TODO: Convert this global substitution to a simple strip of trailing slashes.
+  " Remove trailing slashes from the project name, which can be accidentally
+  " added if Whiplash is invoked like so:
+  " Whiplash projectname/
+  let projectName = substitute(projectName, '/', '', 'g')
+
+  " Set current project and its associated filesystem path.
   let g:WhiplashCurrentProject = projectName
+  let g:WhiplashCurrentProjectPath = g:WhiplashProjectsDir . projectName . "/"
 
   " Determine if a configuration file for the new project exists.
   " expand() is necessary to convert tilde (~) into the user's $HOME

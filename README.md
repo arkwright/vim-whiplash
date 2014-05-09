@@ -122,3 +122,13 @@ The `:Whiplash` invocation command supports tab-autocompletion of
 project names. It will complete partially-entered project names if
 a matching project is found in the directory specified by
 `g:WhiplashProjectsDir`.
+
+### Status Output
+
+Call the `:Whiplash` command without a project name argument to see
+the currently selected project and some related information. Here
+is what the output looks like:
+
+    Current Project : my-project
+    Project Path    : ~/projects/my-project/
+    Vim Working Dir : /Users/arkwright/projects/my-project
