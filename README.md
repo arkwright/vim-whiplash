@@ -107,7 +107,7 @@ switching *to* the project it is specified for.
 Sample `pre.vim`, `post.vim`, and `projectname/config.vim` files are
 provided to get you started. Feel free to modify or delete any of them.
 
-## Configuration Commands
+### Configuration Commands
 
 Inside any of the configuration files you can call the `WhiplashCD`
 command. This is equivalent to calling `:cd ~/projects/yourproject`, as
