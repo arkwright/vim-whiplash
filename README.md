@@ -7,7 +7,9 @@ Easy project switcher for Vim.
 I switch between software projects frequently. Changing projects can be
 a pain in Vim. For example, every time I want to work on a different
 project, I have to call `:cd` to change my working directory, flush my
-Command-T cache, synchronize my NERDTree root directory, and so on.
+[Command-T](https://github.com/wincent/Command-T) cache, synchronize my
+[NERDTree](https://github.com/scrooloose/nerdtree) root directory, and
+so on.
 
 Enough with the madness!
 
@@ -116,7 +118,7 @@ days, when steam-power was still a disruptive innovation.
 
 ### Project Name Tab-Autocompletion
 
-The `Whiplash` invocation command supports tab-autocompletion of
+The `:Whiplash` invocation command supports tab-autocompletion of
 project names. It will complete partially-entered project names if
 a matching project is found in the directory specified by
 `g:WhiplashProjectsDir`.
