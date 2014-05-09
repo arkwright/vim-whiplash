@@ -1,4 +1,4 @@
-# whiplash.vim
+# Whiplash
 
 Easy project switcher for Vim.
 
