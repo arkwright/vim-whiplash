@@ -21,7 +21,7 @@ endif
 " Dynamically create the Whiplash invocation command, unless an identically
 " named command already exists.
 if exists(":" . g:WhiplashCommandName) ==# 0
-  execute "command! -nargs=1 " . g:WhiplashCommandName . " call WhiplashUseProject (<f-args>)"
+  execute "command! -complete=custom,WhiplashProjectNameAutocomplete -nargs=1 " . g:WhiplashCommandName . " call WhiplashUseProject (<f-args>)"
 endif
 
 " Create a convenient command for invoking the WhiplashCD() function.
@@ -78,7 +78,6 @@ function WhiplashUseProject(...)
 
   " TODO: CHECK IF PROJECT DIRECTORY EXISTS. IF NOT, DON'T RUN WHIPLASH
   " SCRIPTS ABOVE.
-  " let projects = system("ls")
 endfunction
 
 function WhiplashCD()
@@ -93,3 +92,36 @@ function WhiplashCD()
   " fnamescape() is for safety when treating strings as file paths.
   execute "cd" fnameescape(g:WhiplashProjectsDir . g:WhiplashCurrentProject . "/")
 endfunction
+
+" Returns a newline-separated string of Whiplash project directory names.
+"
+" @return   string
+function WhiplashGetProjectNamesString()
+  " Gets a newline-separated list of all directory names within the Whiplash projects directory.
+  let projectNames = system("ls -FP " . g:WhiplashProjectsDir)
+
+  " Removes trailing / characters from directory names.
+  let projectNames = substitute(projectNames, '/', '', 'g')
+
+  return projectNames
+endfun
+
+" Returns a newline-separated string of Whiplash project directory
+" autocompletion suggestions.
+"
+" Vim executes this function when the user presses <tab> while entering
+" an argument for the Whiplash invocation command.
+"
+" @param    string    ArgLead    The leading portion of the argument currently
+"                                being completed on.
+" @param    string    CmdLine    The entire command line.
+" @param    integer   CursorPos  The cursor position within the command line
+"                                (byte index)
+"
+" @return   string               A newline-separated string of project
+"                                directory autocompletion suggestions.
+function WhiplashProjectNameAutocomplete(ArgLead, CmdLine, CursorPos)
+  let projectNames = WhiplashGetProjectNamesString()
+
+  return projectNames
+endfun

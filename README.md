@@ -111,3 +111,12 @@ Inside any of the configuration files you can call the `WhiplashCD`
 command. This is equivalent to calling `:cd ~/projects/yourproject`, as
 one would do to change the working directory back in the pre-Whiplash
 days, when steam-power was still a disruptive innovation.
+
+## Protips
+
+### Project Name Tab-Autocompletion
+
+The `Whiplash` invocation command supports tab-autocompletion of
+project names. It will complete partially-entered project names if
+a matching project is found in the directory specified by
+`g:WhiplashProjectsDir`.
