@@ -132,3 +132,12 @@ is what the output looks like:
     Current Project : my-project
     Project Path    : ~/projects/my-project/
     Vim Working Dir : /Users/arkwright/projects/my-project
+
+### Default Project
+
+If you want `:Whiplash` to be called with a specific project name
+at the moment Vim launches, add the following line to your `.vimrc`
+file. Replace `project-name` with the name of your desired default
+project.
+
+    autocmd VimEnter * Whiplash project-name
