@@ -13,8 +13,8 @@ so on.
 
 Enough with the madness!
 
-I just want a simple way to change projects. Whiplash does that. Want to
-change projects? It's as easy as:
+I just want a simple way to execute a bunch of commands when I change
+projects. Whiplash does that. Want to change projects? It's as easy as:
 
     :Whiplash project-name
 
