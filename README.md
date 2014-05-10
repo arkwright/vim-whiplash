@@ -177,7 +177,7 @@ necessary.
     :WhiplashCopyFile one/two/three.txt
 
 `:WhiplashCopyFile` currently only supports copying a single file. To
-copy multiple files, call `WhiplashCopyFile` multiple times! I am
+copy multiple files, call `:WhiplashCopyFile` multiple times! I am
 planning to add support for copying entire directories and their
 contents.
 
