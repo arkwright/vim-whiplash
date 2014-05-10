@@ -141,3 +141,7 @@ file. Replace `project-name` with the name of your desired default
 project.
 
     autocmd VimEnter * Whiplash project-name
+
+# License
+
+[Unlicense](http://unlicense.org/)
