@@ -149,7 +149,7 @@ path:
 
     ~/.vim/bundle/vim-whiplash/projects/fubar/.gitignore
 
-Now, add the following line to Whiplash `config.vim` file for the
+Now, add the following line to the Whiplash `config.vim` file for the
 `fubar` project:
 
     :WhiplashCopyFile .gitignore
