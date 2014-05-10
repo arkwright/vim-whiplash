@@ -67,9 +67,9 @@ to switch to.
 By default, Whiplash doesn't really do anything. That's because you need
 to tell it *what* to do when switching projects. Should the current
 working directory be reset? Should NERDTree open? You decide! Whiplash
-allows you to specify Vimscript configuration files which should
-be run when switching projects. Don't worry: it's not as complicated as
-it sounds.
+allows you to specify Vimscript configuration files which should be run
+when switching projects. Don't worry: it's not as complicated as it
+sounds.
 
 By default, Whiplash assumes you want to keep your project configuration
 Vimscript files in this directory:
@@ -107,38 +107,103 @@ switching *to* the project it is specified for.
 Sample `pre.vim`, `post.vim`, and `projectname/config.vim` files are
 provided to get you started. Feel free to modify or delete any of them.
 
-### Configuration Commands
+## Configuration Commands
 
-Inside any of the configuration files you can call the `:WhiplashCD`
-command. This is equivalent to calling `:cd ~/projects/yourproject`, as
-one would do to change the working directory back in the pre-Whiplash
-days, when steam-power was still a disruptive innovation.
+Whiplash provides special commands to handle common project
+configuration tasks. You can use these commands inside your Whiplash
+config files.
+
+### :WhiplashCD
+
+The `:WhiplashCD` command changes Vim's current working directory to be
+the current Whiplash project directory. It is equivalent to calling `:cd
+<your project dir>`, as one would do to change the working directory
+back in the pre-Whiplash days, when steam-power was still a disruptive
+innovation.
+
+### :WhiplashCopyFile <file_path>
+
+The `:WhiplashCopyFile` command copys the specified file from your
+Whiplash project config directory into the main project directory. It
+overwrites the destination file if it already exists. An example will
+make this easier to understand why this is useful.
+
+Let's say you work with a team on a software project named `fubar`. You
+keep a clone of the `fubar` Git repo at `~/projects/fubar`. The team
+shares a `.gitignore` file inside the repo. You don't like the way the
+shared `.gitignore` file is set up, and you want to customize it. Your
+problem is that you aren't allowed to commit your customizations,
+because then everyone else on the team will be forced to use them. This
+is frustrating for you, because each time you reset your local copy of
+the `fubar` repo, you lose all of your `.gitignore` customizations.
+
+`:WhiplashCopyFile` can solve this problem in a way that will keep
+everybody happy.
+
+Simply add your custom `.gitignore` file to the Whiplash
+project-specific config directory for the `fubar` project. By default,
+Whiplash looks for project config directories at
+`~/.vim/bundle/vim-whiplash/projects/`. So, Assuming a default Whiplash
+configuration, you would create your custom `.gitignore` file at this
+path:
+
+    ~/.vim/bundle/vim-whiplash/projects/fubar/.gitignore
+
+Now, add the following line to Whiplash `config.vim` file for the
+`fubar` project:
+
+    :WhiplashCopyFile .gitignore
+
+From now on, whenever you invoke the `:Whiplash fubar` command, Whiplash
+will automatically copy the custom `.gitignore` you created into this
+location:
+
+    ~/projects/fubar/.gitignore
+
+This is a very powerful concept: team defaults with personal overrides.
+Everybody receives a `.gitignore` file, but yours is always customized
+to your taste. The only caveat is that you have to be careful not to
+commit the overridden changes to `.gitignore`.
+
+`:WhiplashCopyFile` is very useful for most dotfiles. I use it to inject
+a customized `.agignore` into my projects.
+
+You can also use `:WhiplashCopyFile` to copy files nested within
+directories. The command below will copy `one/two/three.txt` into your
+project directory, and create nested directories in the destination if
+necessary.
+
+    :WhiplashCopyFile one/two/three.txt
+
+`:WhiplashCopyFile` currently only supports copying a single file. To
+copy multiple files, call `WhiplashCopyFile` multiple times! I am
+planning to add support for copying entire directories and their
+contents.
 
 ## Protips
 
 ### Project Name Tab-Autocompletion
 
 The `:Whiplash` invocation command supports tab-autocompletion of
-project names. It will complete partially-entered project names if
-a matching project is found in the directory specified by
+project names. It will complete partially-entered project names if a
+matching project is found in the directory specified by
 `g:WhiplashProjectsDir`.
 
 ### Status Output
 
-Call the `:Whiplash` command without a project name argument to see
-the currently selected project and some related information. Here
-is what the output looks like:
+Call the `:Whiplash` command without a project name argument to see the
+currently selected project and some related information. Here is what
+the output looks like:
 
-    Current Project : my-project
-    Project Path    : ~/projects/my-project/
-    Vim Working Dir : /Users/arkwright/projects/my-project
+    Current Project : my-project Project Path    :
+    ~/projects/my-project/ Vim Working Dir :
+    /Users/arkwright/projects/my-project
 
 ### Default Project
 
-If you want `:Whiplash` to be called with a specific project name
-at the moment Vim launches, add the following line to your `.vimrc`
-file. Replace `project-name` with the name of your desired default
-project.
+If you want `:Whiplash` to be called with a specific project name at the
+moment Vim launches, add the following line to your `.vimrc` file.
+Replace `project-name` with the name of your desired default project.
 
     autocmd VimEnter * Whiplash project-name
 
