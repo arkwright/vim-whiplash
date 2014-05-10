@@ -163,7 +163,8 @@ location:
 This is a very powerful concept: team defaults with personal overrides.
 Everybody receives a `.gitignore` file, but yours is always customized
 to your taste. The only caveat is that you have to be careful not to
-commit the overridden changes to `.gitignore`.
+commit the overridden changes to `.gitignore` back to the team's shared
+repo.
 
 `:WhiplashCopyFile` is very useful for most dotfiles. I use it to inject
 a customized `.agignore` into my projects.
