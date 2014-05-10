@@ -126,7 +126,7 @@ innovation.
 The `:WhiplashCopyFile` command copys the specified file from your
 Whiplash project config directory into the main project directory. It
 overwrites the destination file if it already exists. An example will
-make this easier to understand why this is useful.
+make it easier to understand why this is useful.
 
 Let's say you work with a team on a software project named `fubar`. You
 keep a clone of the `fubar` Git repo at `~/projects/fubar`. The team
