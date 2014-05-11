@@ -72,28 +72,28 @@ when switching projects. Don't worry: it's not as complicated as it
 sounds.
 
 By default, Whiplash assumes you want to keep your project configuration
-Vimscript files in this directory:
+files inside your dotfiles repo, in this directory:
 
-    ~/.vim/bundle/vim-whiplash/projects/
+    ~/projects/dotfiles/whiplash-config/
 
 If you want to change the directory where the configuration files are
 stored, add this line to your `.vimrc` file:
 
-    let g:WhiplashConfigDir = "your/whiplash/configuration/dir"
+    let g:WhiplashConfigDir = '/your/whiplash/configuration/dir/'
 
-Replace `your/whiplash/configuration/dir` with a path to the directory
+Replace `/your/whiplash/configuration/dir/` with a path to the directory
 where your configuration files are stored.
 
 When switching projects, you provide Whiplash with a project name. That
 project name is used to locate a Vimscript configuration file within
 your Whiplash configuration directory. For example, if your project name
 is `fubar`, and your Whiplash configuration directory is set to
-`~/.vim/bundle/vim-whiplash/projects/`, then Whiplash will attempt to
+`~/projects/dotfiles/whiplash-config/`, then Whiplash will attempt to
 execute all Vim commands inside these three files:
 
-    ~/.vim/bundle/vim-whiplash/projects/pre.vim
-    ~/.vim/bundle/vim-whiplash/projects/fubar/config.vim
-    ~/.vim/bundle/vim-whiplash/projects/post.vim
+    ~/projects/dotfiles/whiplash-config/pre.vim
+    ~/projects/dotfiles/whiplash-config/fubar/config.vim
+    ~/projects/dotfiles/whiplash-config/post.vim
 
 Why three files? To give you more control over the project switching
 process. The files are executed in the order listed above: `pre.vim`,
@@ -143,11 +143,11 @@ everybody happy.
 Simply add your custom `.gitignore` file to the Whiplash
 project-specific config directory for the `fubar` project. By default,
 Whiplash looks for project config directories at
-`~/.vim/bundle/vim-whiplash/projects/`. So, Assuming a default Whiplash
+`~/projects/dotfiles/whiplash-config/`. So, Assuming a default Whiplash
 configuration, you would create your custom `.gitignore` file at this
 path:
 
-    ~/.vim/bundle/vim-whiplash/projects/fubar/.gitignore
+    ~/projects/dotfiles/whiplash-config/fubar/.gitignore
 
 Now, add the following line to the Whiplash `config.vim` file for the
 `fubar` project:
