@@ -216,6 +216,25 @@ Replace `project-name` with the name of your desired default project.
 
     autocmd VimEnter * Whiplash project-name
 
+### Ignore Files
+
+Often you will want Vim to ignore certain files in a project. `:set
+wildignore` is Vim's built-in way of doing this. Add and customize
+lines like these within your project's `config.vim`.
+
+    set wildignore=
+    set wildignore+=some/dir/you/want/to/ignore/
+    set wildignore+=ignore_all_files_under_this_dir/**
+
+> Command-T/ctrlp and other plugins use the `wildignore` option when
+> filtering the results they display to you. A decent `wildignore` can
+> speed up these plugins when working with projects containing large
+> numbers of files.
+> 
+> The `set wildignore=` line clears your current `wildignore` setting so
+> that you are starting from scratch when configuring `wildignore` for
+> this project.
+
 # License
 
 [Unlicense](http://unlicense.org/)
