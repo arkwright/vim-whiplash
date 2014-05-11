@@ -204,9 +204,9 @@ Call the `:Whiplash` command without a project name argument to see the
 currently selected project and some related information. Here is what
 the output looks like:
 
-    Current Project : my-project Project Path    :
-    ~/projects/my-project/ Vim Working Dir :
-    /Users/arkwright/projects/my-project
+    Current Project : my-project
+    Project Path    : ~/projects/my-project/
+    Vim Working Dir : /Users/arkwright/projects/my-project
 
 ### Default Project
 
