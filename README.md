@@ -25,6 +25,9 @@ Get [Pathogen](https://github.com/tpope/vim-pathogen), and then:
     cd ~/.vim/bundle
     git clone https://github.com/arkwright/vim-whiplash.git
 
+Only tested in Vim 7.4 on OS X using MacVim. It probably doesn't work on
+Windows. If you would like Windows support, please open an issue.
+
 ## Usage
 
 To change projects, simply invoke the `:Whiplash` command:
