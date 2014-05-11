@@ -166,6 +166,11 @@ to your taste. The only caveat is that you have to be careful not to
 commit the overridden changes to `.gitignore` back to the team's shared
 repo.
 
+> Yes, I know that `.git/info/exclude` performs a similar function. But
+> that file is not safely backed up in your project's Git repo. Your
+> Whiplash config directory will likely be stored in a peronsal repo
+> which you *will* be backing up regularly.
+
 `:WhiplashCopyFile` is very useful for most dotfiles. I use it to inject
 a customized `.agignore` into my projects.
 
