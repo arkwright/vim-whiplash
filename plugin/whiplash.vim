@@ -11,7 +11,7 @@ let g:WhiplashCurrentProjectPath      = ''
 " Allow the user to specify the directory where project-specific configuration
 " files will be stored. Fallback to a default value if nothing is specified.
 if exists("g:WhiplashConfigDir") ==# 0   ||   g:WhiplashConfigDir ==# ''
-  let g:WhiplashConfigDir = "~/.vim/bundle/vim-whiplash/projects/"
+  let g:WhiplashConfigDir = "~/projects/dotfiles/whiplash-config/"
 endif
 
 " Allow the user to specify the command name which will invoke Whiplash.
