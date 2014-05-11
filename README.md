@@ -104,8 +104,11 @@ they are executed *every time* you switch projects. The `config.vim`
 file is the *project* configuration file: it is executed *only* when
 switching *to* the project it is specified for.
 
-Sample `pre.vim`, `post.vim`, and `projectname/config.vim` files are
-provided to get you started. Feel free to modify or delete any of them.
+Sample `pre.vim`, `post.vim`, and `sample-projects/config.vim` files are
+provided inside the
+[whiplash-config](https://github.com/arkwright/vim-whiplash/tree/master/whiplash-config)
+directory to give you inspiration for the cool things that Whiplash can
+do.
 
 ## Configuration Commands
 
