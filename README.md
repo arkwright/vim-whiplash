@@ -85,7 +85,7 @@ stored, add this line to your `.vimrc` file:
     let g:WhiplashConfigDir = '/your/whiplash/configuration/dir/'
 
 Replace `/your/whiplash/configuration/dir/` with a path to the directory
-where your configuration files are stored.
+where you want to store your Whiplash configuration files.
 
 When switching projects, you provide Whiplash with a project name. That
 project name is used to locate a Vimscript configuration file within
@@ -107,8 +107,7 @@ they are executed *every time* you switch projects. The `config.vim`
 file is the *project* configuration file: it is executed *only* when
 switching *to* the project it is specified for.
 
-Sample `pre.vim`, `post.vim`, and `sample-projects/config.vim` files are
-provided inside the
+Sample `pre.vim`, `post.vim`, and `config.vim` files are provided inside the
 [whiplash-config](https://github.com/arkwright/vim-whiplash/tree/master/whiplash-config)
 directory to give you inspiration for the cool things that Whiplash can
 do.
