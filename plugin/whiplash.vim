@@ -185,6 +185,10 @@ function! s:WhiplashGetProjectNamesString()
   " Remove trailing / characters from directory names.
   let l:projectNames = substitute(l:projectNames, '/', '', 'g')
 
+  " Remove trailing @ characters from symbolic links.
+  " We are assuming that all symbolic links point to directories.
+  let l:projectNames = substitute(l:projectNames, '@', '', 'g')
+
   return l:projectNames
 endfunction
 
