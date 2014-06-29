@@ -16,6 +16,17 @@
 
 
 """
+" DISPLAY CURRENT PROJECT NAME
+"
+" It can be reassuring to display the current project name when
+" switching projects.
+"""
+
+" WhiplashEchoProjectName
+
+
+
+"""
 " SYNCHRONIZING NERDTREE
 "
 " Many people enjoy the NERDTree plugin. You can force NERDTree to sync

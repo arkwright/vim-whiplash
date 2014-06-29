@@ -36,6 +36,11 @@ if exists(":WhiplashCopyFile") ==# 0
   execute "command! -nargs=? WhiplashCopyFile call s:WhiplashCopyFile(<f-args>)"
 endif
 
+" Create a convenient command for invoking the WhiplashEchoProjectName() function.
+if exists(":WhiplashEchoProjectName") ==# 0
+  execute "command! WhiplashEchoProjectName call s:WhiplashEchoProjectName()"
+endif
+
 """
 " The main Whiplash invocation function.
 " If called with a string argument, switches the Whiplash current project to the specified project.
@@ -171,6 +176,13 @@ function! s:WhiplashCopyFile(...)
   " Check all buffers against the file stored on disk, and prompt the user
   " to reload the file if a conflict has occurred.
   checktime
+endfunction
+
+"""
+" Echos the name of the current project.
+"""
+function! s:WhiplashEchoProjectName()
+  echo g:WhiplashCurrentProject
 endfunction
 
 """

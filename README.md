@@ -191,6 +191,14 @@ copy multiple files, call `:WhiplashCopyFile` multiple times! I am
 planning to add support for copying entire directories and their
 contents.
 
+### :WhiplashEchoProjectName
+
+The `:WhiplashEchoProjectName` command does exactly what it says on the
+tin: it echos the name of the currently selected project.
+
+Sometimes it's just reassuring to visually confirm which project you
+selected.
+
 ## Protips
 
 ### Project Name Tab-Autocompletion
