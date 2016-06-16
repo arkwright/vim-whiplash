@@ -201,7 +201,13 @@ endfunction
 " @return   string    A newline-separated string of Whiplash project directory names.
 """
 function! s:WhiplashGetProjectNamesString()
-  return join(filter(globpath(g:WhiplashProjectsDir, '*', 0, 1), 'isdirectory(v:val)'), "\n")
+  " trim the leading path component from each project's name
+  let l:trimlen = strlen(expand(g:WhiplashProjectsDir))
+  return join(
+        \map(
+        \ filter(globpath(g:WhiplashProjectsDir, '*', 0, 1), 'isdirectory(v:val)'),
+        \ 'strpart(v:val, l:trimlen)'),
+        \"\n")
 endfunction
 
 """
