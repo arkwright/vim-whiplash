@@ -78,6 +78,19 @@ function! s:WhiplashUseProject(...)
   let g:WhiplashCurrentProjectConfigDir = g:WhiplashConfigDir . l:projectName . '/'
   let g:WhiplashCurrentProjectPath = g:WhiplashProjectsDir . l:projectName . '/'
 
+  " Ensure that the project actually exists before trying to run its scripts
+  " Resolve any symlinks that may be encountered
+  if getftype(expand(g:WhiplashCurrentProjectPath)) == 'link'
+    let l:simplified = resolve(expand(g:WhiplashCurrentProjectPath))
+    if getftype(l:simplified) != 'dir'
+      echoerr "Project '" . g:WhiplashCurrentProjectPath . "' does not exist or is not a directory!"
+      return
+    endif
+  elseif getftype(expand(g:WhiplashCurrentProjectPath)) != 'dir'
+    echoerr "Project '" . g:WhiplashCurrentProjectPath . "' does not exist or is not a directory!!"
+    return
+  endif
+
   " Determine if a configuration file for the new project exists.
   " expand() is necessary to convert tilde (~) into the user's $HOME
   " directory, and other fancy wildcard replacement magic.
@@ -104,9 +117,6 @@ function! s:WhiplashUseProject(...)
   if l:globalPostConfigFileExists
     execute "source" l:globalPostConfigFilePath
   endif
-
-  " TODO: CHECK IF PROJECT DIRECTORY EXISTS. IF NOT, DON'T RUN WHIPLASH
-  " SCRIPTS ABOVE.
 endfunction
 
 """
